@@ -65,11 +65,11 @@ module.exports = (app) => {
 
             user.generateToken((err, user) => {
               if (err) return res.status(400).send(err);
-              res.cookie("auth", user.token).json({
+              res.json({
                 isAuth: true,
                 id: user._id,
                 email: user.email,
-                auth: user.token
+                auth: user.token,
               });
             });
           });
