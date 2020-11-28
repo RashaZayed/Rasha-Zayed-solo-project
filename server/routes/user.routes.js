@@ -69,7 +69,7 @@ module.exports = (app) => {
                 isAuth: true,
                 id: user._id,
                 email: user.email,
-                auth: user.token,
+                auth: user.token,   //to return its token in response
               });
             });
           });

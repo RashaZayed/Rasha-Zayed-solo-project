@@ -1,7 +1,7 @@
 const User = require("../models/user.model");
 
-let auth = (req, res, next) => {
-  let token = req.cookies.auth;
+let auth = (req, res, next) => {  //to check if there is token or not
+  let token = req.headers['auth']
   User.findByToken(token, (err, user) => {
     if (err) throw err;
     if (!user)
