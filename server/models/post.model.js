@@ -9,8 +9,11 @@ const PostScehma = new mongoose.Schema({
         required: [true , "make sure you write your post"],
         minlength: [1 , 'make sure you write your post'],
 
+    },
+    userId: {
+        type: String,
+        required: true,
     }
-    
 })
 
 const Post = mongoose.model('Post' , PostScehma);

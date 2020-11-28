@@ -1,8 +1,10 @@
 const Post = require('../models/post.model')
 
+
 module.exports.createPost = (req,res)=> {
     const {title , post} = req.body;
-    Post.create({title , post})
+    const userId = req.user._id
+    Post.create({title , post , userId})
     .then(post => res.json(post))
     .catch(err => res.status(400).json(err))
 }

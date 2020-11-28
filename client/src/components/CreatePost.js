@@ -3,6 +3,8 @@ import axios from "axios";
 import { Paper, FormControl, OutlinedInput, Button } from "@material-ui/core";
 import { navigate, Link } from "@reach/router";
 import DeletePost from "./DeletePost";
+import Cookies from "universal-cookie";
+
 const styles = {
   paper: {
     width: "20rem",
@@ -17,6 +19,8 @@ const styles = {
     margin: '20px'
   },
 };
+const cookies = new Cookies();
+const token = cookies.get('auth');
 
 export default () => {
   const [postContent, setPostContent] = useState({
@@ -34,7 +38,11 @@ export default () => {
     e.preventDefault();
     const { title, post } = postContent;
     axios
-      .post("http://localhost:8000/api/post", { title, post })
+      .post("http://localhost:8000/api/post", { title, post }, {
+        headers: {
+            auth : token
+          }
+      })
       .then((res) => {
           setPostId([...postId, res.data._id]);
           console.log(res)
