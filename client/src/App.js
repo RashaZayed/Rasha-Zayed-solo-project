@@ -1,9 +1,12 @@
 import Signin from "../src/components/Signin";
 import "./App.css";
 import Register from "../src/components/Register";
-import Profile from "../src/components/Profile";
-import CreatePost from "../src/components/CreatePost";
+import ProfilePage from "../src/views/ProfilePage";
+
 import { Router } from "@reach/router";
+import HomePage from "./views/HomePage";
+import Like from './components/Like'
+
 
 function App() {
   return (
@@ -11,8 +14,10 @@ function App() {
       <Router>
         <Signin path="/" />
         <Register path="/register" />
-        <Profile path="/profile" />
-        <CreatePost path="/post" />
+        <ProfilePage path="/profile" />
+        <Like path='/like' />
+        <HomePage path="/home" />
+        
       </Router>
     </div>
   );

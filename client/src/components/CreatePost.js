@@ -7,16 +7,17 @@ import Cookies from "universal-cookie";
 
 const styles = {
   paper: {
-    width: "20rem",
+    width: "800px",
     padding: "1rem",
-    margin: "50px",
+    margin: "25px",
   },
   input: {
     marginBottom: "1rem",
+    marginLeft: "4rem",
   },
   button: {
-    
-    margin: '20px'
+    float: 'right',
+    marginTop: '8px'
   },
 };
 const cookies = new Cookies();
@@ -52,10 +53,19 @@ export default () => {
   console.log("id is" , postId)
 
   return (
+      <div className='createPost'>
     <Paper elevation={3} style={styles.paper}>
       <form>
+        <Button
+          type="submit"
+          onClick={onSubmitHandler}
+          variant="contained"
+          color="primary"
+          style={styles.button}
+        >
+          Post
+        </Button>
         <FormControl variant="outlined" style={styles.input}>
-        <DeletePost  id={postId} /> 
              
           <OutlinedInput
             onChange={onChangeHandler}
@@ -74,17 +84,10 @@ export default () => {
         </FormControl>
         <br />
 
-        <Button
-          type="submit"
-          onClick={onSubmitHandler}
-          variant="contained"
-          color="primary"
-          style={styles.button}
-        >
-          Post
-        </Button>
+        
        
       </form>
     </Paper>
+    </div>
   );
 };

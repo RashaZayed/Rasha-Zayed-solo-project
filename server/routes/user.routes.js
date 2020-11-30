@@ -3,7 +3,7 @@ const bodyparser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const { auth } = require("../middlewares/auth");
 const User = require("../models/user.model");
-// const db=require('../config/mongoose.config').get(process.env.NODE_ENV);
+
 
 module.exports = (app) => {
   //to post
@@ -40,7 +40,7 @@ module.exports = (app) => {
   });
   // login user
   app.post("/api/login", function (req, res) {
-    let token = req.cookies.auth;
+    let token = req.cookies.auth;      
     User.findByToken(token, (err, user) => {
       if (err) return res(err);
       if (user)

@@ -10,6 +10,11 @@ const PostScehma = new mongoose.Schema({
         minlength: [1 , 'make sure you write your post'],
 
     },
+    like:{
+        type: Number,
+        default: 0,
+
+    },
     userId: {
         type: String,
         required: true,
