@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {
-  Paper,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  Button,
-} from "@material-ui/core";
+import { Paper, FormControl, OutlinedInput, Button } from "@material-ui/core";
 import { navigate, Link } from "@reach/router";
 const styles = {
   paper: {
@@ -30,6 +24,7 @@ export default () => {
     password2: "",
   });
   const [loaded, setLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState([]);
   const onClickHandler = (e) => {
     setUser({
       ...user,
@@ -53,52 +48,63 @@ export default () => {
 
         // navigate("/")
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        const errArr = [err.response.data.message];
+        setErrorMessage(errArr);
+      });
   };
-  console.log(user);
+  const displayValidator = errorMessage.map((error, i) => {
+    return (
+      <p key={i}>
+        {error}
+      </p>
+    );
+  });
+
   return (
     <Paper elevation={3} style={styles.paper}>
       {loaded && <div>Thanks for registering With us</div>}
       <h2>Registraion Form</h2>
       <form>
         <FormControl variant="outlined" style={styles.input}>
-          
           <OutlinedInput
             onChange={onClickHandler}
             name="firstname"
             type="text"
-            placeholder='First Name'
+            placeholder="First Name"
           />
         </FormControl>
         <FormControl variant="outlined" style={styles.input}>
-          
           <OutlinedInput
             onChange={onClickHandler}
             name="lastname"
             type="text"
-            placeholder='Last Name'
+            placeholder="Last Name"
           />
         </FormControl>
         <FormControl variant="outlined" style={styles.input}>
-         
-          <OutlinedInput onChange={onClickHandler} name="email" type="email" placeholder='Email' />
+          <OutlinedInput
+            onChange={onClickHandler}
+            name="email"
+            type="email"
+            placeholder="Email"
+          />
         </FormControl>
         <FormControl variant="outlined" style={styles.input}>
-          
           <OutlinedInput
             onChange={onClickHandler}
             name="password"
             type="password"
-            placeholder='Password'
+            placeholder="Password"
           />
         </FormControl>
         <FormControl variant="outlined" style={styles.input}>
-          
           <OutlinedInput
             onChange={onClickHandler}
             name="password2"
             type="password"
-            placeholder='Confirm Password'
+            placeholder="Confirm Password"
           />
         </FormControl>
         <Button
@@ -108,9 +114,10 @@ export default () => {
           color="primary"
         >
           Register
-        </Button><br/>
-        <Link to='/'> Sign in</Link>
-        
+        </Button>
+        <br />
+        <Link to="/"> Sign in</Link>
+        {displayValidator}
       </form>
     </Paper>
   );

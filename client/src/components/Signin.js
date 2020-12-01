@@ -10,25 +10,12 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withTheme } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Cookies from "universal-cookie";
 import axios from "axios";
 
 import { navigate } from "@reach/router";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {
@@ -51,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignIn() {
+  const [errorMessage, setErrorMessage] = useState([]);
   const classes = useStyles();
   const cookies = new Cookies();
   const [user, setUser] = useState({
@@ -75,9 +63,19 @@ export default function SignIn() {
         }
         console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        const errArr = [err.response.data.message];
+        setErrorMessage(errArr);
+      });
   };
-  console.log(user);
+  const displayValidator = errorMessage.map((error, i) => {
+    return (
+      <p className="alert alert-warning alert-dismissible fade show" key={i}>
+        {error}
+      </p>
+    );
+  });
 
   return (
     <Container component="main" maxWidth="xs">
@@ -114,10 +112,7 @@ export default function SignIn() {
             id="password"
             autoComplete="current-password"
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          />
+
           <Button
             type="submit"
             onClick={onSubmitHandler}
@@ -138,9 +133,7 @@ export default function SignIn() {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
+      {displayValidator}
     </Container>
   );
 }

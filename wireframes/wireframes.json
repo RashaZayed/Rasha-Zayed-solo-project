@@ -1,0 +1,496 @@
+{
+  "mockup": {
+    "controls": {
+      "control": [
+        {
+          "ID": "0",
+          "typeID": "BrowserWindow",
+          "zOrder": "0",
+          "measuredW": "450",
+          "measuredH": "400",
+          "x": "657",
+          "y": "13",
+          "properties": {
+            "text": "A Web Page\nhttps://localhost:3000/"
+          }
+        },
+        {
+          "ID": "1",
+          "typeID": "TextInput",
+          "zOrder": "1",
+          "w": "221",
+          "measuredW": "46",
+          "measuredH": "27",
+          "x": "702",
+          "y": "132",
+          "properties": {
+            "text": "email"
+          }
+        },
+        {
+          "ID": "2",
+          "typeID": "TextInput",
+          "zOrder": "2",
+          "w": "222",
+          "measuredW": "70",
+          "measuredH": "27",
+          "x": "702",
+          "y": "180",
+          "properties": {
+            "text": "password"
+          }
+        },
+        {
+          "ID": "4",
+          "typeID": "Button",
+          "zOrder": "3",
+          "w": "97",
+          "h": "27",
+          "measuredW": "64",
+          "measuredH": "27",
+          "x": "747",
+          "y": "313",
+          "properties": {
+            "text": "Sign in"
+          }
+        },
+        {
+          "ID": "6",
+          "typeID": "Button",
+          "zOrder": "4",
+          "w": "94",
+          "h": "27",
+          "measuredW": "69",
+          "measuredH": "27",
+          "x": "975",
+          "y": "313",
+          "properties": {
+            "text": "Sign up"
+          }
+        },
+        {
+          "ID": "8",
+          "typeID": "StickyNote",
+          "zOrder": "5",
+          "measuredW": "109",
+          "measuredH": "123",
+          "x": "991",
+          "y": "132",
+          "properties": {
+            "text": "sign in page with authentication \n\n\n"
+          }
+        },
+        {
+          "ID": "10",
+          "typeID": "BrowserWindow",
+          "zOrder": "6",
+          "measuredW": "450",
+          "measuredH": "400",
+          "x": "90",
+          "y": "628",
+          "properties": {
+            "text": "A Web Page\nhttps://localhost:3000/profile"
+          }
+        },
+        {
+          "ID": "13",
+          "typeID": "TextArea",
+          "zOrder": "7",
+          "w": "174",
+          "h": "67",
+          "measuredW": "200",
+          "measuredH": "140",
+          "x": "210",
+          "y": "711",
+          "properties": {
+            "text": "Welcome Rasha Zayed\nrasha.zayed@outlook.com\n"
+          }
+        },
+        {
+          "ID": "14",
+          "typeID": "TextArea",
+          "zOrder": "8",
+          "h": "53",
+          "measuredW": "200",
+          "measuredH": "140",
+          "x": "193",
+          "y": "788",
+          "locked": "true",
+          "properties": {
+            "text": "\t\t\tWhat's in your mind ?"
+          }
+        },
+        {
+          "ID": "15",
+          "typeID": "TextArea",
+          "zOrder": "9",
+          "h": "56",
+          "measuredW": "200",
+          "measuredH": "140",
+          "x": "193",
+          "y": "857",
+          "properties": {
+            "text": "Rasha's posts"
+          }
+        },
+        {
+          "ID": "16",
+          "typeID": "TextArea",
+          "zOrder": "10",
+          "h": "56",
+          "measuredW": "200",
+          "measuredH": "140",
+          "x": "193",
+          "y": "929",
+          "properties": {
+            "text": "Rasha's posts"
+          }
+        },
+        {
+          "ID": "18",
+          "typeID": "Button",
+          "zOrder": "11",
+          "w": "52",
+          "h": "21",
+          "measuredW": "50",
+          "measuredH": "27",
+          "x": "204",
+          "y": "813",
+          "properties": {
+            "text": "post"
+          }
+        },
+        {
+          "ID": "19",
+          "typeID": "StickyNote",
+          "zOrder": "12",
+          "measuredW": "109",
+          "measuredH": "123",
+          "x": "405",
+          "y": "711",
+          "properties": {
+            "text": "after login will direct to profile page "
+          }
+        },
+        {
+          "ID": "20",
+          "typeID": "StickyNote",
+          "zOrder": "13",
+          "measuredW": "109",
+          "measuredH": "123",
+          "x": "418",
+          "y": "849",
+          "properties": {
+            "text": "user's info will be displayed and all the old posts "
+          }
+        },
+        {
+          "ID": "21",
+          "typeID": "StickyNote",
+          "zOrder": "14",
+          "measuredW": "109",
+          "measuredH": "123",
+          "x": "85",
+          "y": "740",
+          "properties": {
+            "text": "like button feature "
+          }
+        },
+        {
+          "ID": "22",
+          "typeID": "Button",
+          "zOrder": "15",
+          "w": "63",
+          "h": "21",
+          "measuredW": "60",
+          "measuredH": "27",
+          "x": "222",
+          "y": "751",
+          "properties": {
+            "text": "Home"
+          }
+        },
+        {
+          "ID": "26",
+          "typeID": "Icon",
+          "zOrder": "16",
+          "measuredW": "24",
+          "measuredH": "24",
+          "x": "204",
+          "y": "954",
+          "properties": {
+            "icon": {
+              "ID": "thumbs-up",
+              "size": "small"
+            }
+          }
+        },
+        {
+          "ID": "27",
+          "typeID": "Icon",
+          "zOrder": "17",
+          "measuredW": "24",
+          "measuredH": "24",
+          "x": "204",
+          "y": "879",
+          "properties": {
+            "icon": {
+              "ID": "thumbs-up",
+              "size": "small"
+            }
+          }
+        },
+        {
+          "ID": "28",
+          "typeID": "BrowserWindow",
+          "zOrder": "18",
+          "measuredW": "450",
+          "measuredH": "400",
+          "x": "90",
+          "y": "1184",
+          "properties": {
+            "text": "A Web Page\nhttps://localhost:3000/home"
+          }
+        },
+        {
+          "ID": "30",
+          "typeID": "TextArea",
+          "zOrder": "19",
+          "w": "305",
+          "h": "60",
+          "measuredW": "200",
+          "measuredH": "140",
+          "x": "129",
+          "y": "1274",
+          "properties": {
+            "text": "What's in your mind\n"
+          }
+        },
+        {
+          "ID": "31",
+          "typeID": "TextArea",
+          "zOrder": "20",
+          "w": "305",
+          "h": "68",
+          "measuredW": "200",
+          "measuredH": "140",
+          "x": "129",
+          "y": "1350",
+          "properties": {
+            "text": "Nadia Mike\nHappy Holiday's everyone!\n                                                  5\n"
+          }
+        },
+        {
+          "ID": "32",
+          "typeID": "TextArea",
+          "zOrder": "21",
+          "w": "304",
+          "h": "67",
+          "measuredW": "200",
+          "measuredH": "140",
+          "x": "130",
+          "y": "1423",
+          "properties": {
+            "text": "Helena David\nvery busy day\n                                 "
+          }
+        },
+        {
+          "ID": "33",
+          "typeID": "Button",
+          "zOrder": "22",
+          "measuredW": "50",
+          "measuredH": "27",
+          "x": "143",
+          "y": "1297",
+          "properties": {
+            "text": "post"
+          }
+        },
+        {
+          "ID": "34",
+          "typeID": "Button",
+          "zOrder": "23",
+          "w": "70",
+          "h": "27",
+          "measuredW": "61",
+          "measuredH": "27",
+          "x": "457",
+          "y": "1264",
+          "properties": {
+            "text": "Profile"
+          }
+        },
+        {
+          "ID": "36",
+          "typeID": "Icon",
+          "zOrder": "24",
+          "measuredW": "24",
+          "measuredH": "24",
+          "x": "323",
+          "y": "1383",
+          "properties": {
+            "icon": {
+              "ID": "thumbs-up",
+              "size": "small"
+            }
+          }
+        },
+        {
+          "ID": "37",
+          "typeID": "Icon",
+          "zOrder": "25",
+          "measuredW": "24",
+          "measuredH": "24",
+          "x": "323",
+          "y": "1463",
+          "properties": {
+            "icon": {
+              "ID": "thumbs-up",
+              "size": "small"
+            }
+          }
+        },
+        {
+          "ID": "38",
+          "typeID": "StickyNote",
+          "zOrder": "26",
+          "w": "103",
+          "h": "123",
+          "measuredW": "109",
+          "measuredH": "123",
+          "x": "437",
+          "y": "1307",
+          "properties": {
+            "text": "Home page will display all the users posts "
+          }
+        },
+        {
+          "ID": "39",
+          "typeID": "StickyNote",
+          "zOrder": "27",
+          "measuredW": "109",
+          "measuredH": "123",
+          "x": "47",
+          "y": "1487",
+          "properties": {
+            "text": "can post a new post! to be displayed on home page and profile page\n"
+          }
+        },
+        {
+          "ID": "41",
+          "typeID": "BrowserWindow",
+          "zOrder": "28",
+          "h": "419",
+          "measuredW": "450",
+          "measuredH": "400",
+          "x": "64",
+          "y": "13",
+          "properties": {
+            "text": "A Web Page\nhttps://localhos:3000/register\n"
+          }
+        },
+        {
+          "ID": "42",
+          "typeID": "Button",
+          "zOrder": "29",
+          "measuredW": "70",
+          "measuredH": "27",
+          "x": "105",
+          "y": "356",
+          "properties": {
+            "text": "register"
+          }
+        },
+        {
+          "ID": "43",
+          "typeID": "TextInput",
+          "zOrder": "30",
+          "w": "236",
+          "measuredW": "80",
+          "measuredH": "27",
+          "x": "150",
+          "y": "142",
+          "properties": {
+            "text": "First Name"
+          }
+        },
+        {
+          "ID": "44",
+          "typeID": "TextInput",
+          "zOrder": "31",
+          "w": "238",
+          "measuredW": "78",
+          "measuredH": "27",
+          "x": "148",
+          "y": "187",
+          "properties": {
+            "text": "Last Name"
+          }
+        },
+        {
+          "ID": "45",
+          "typeID": "TextInput",
+          "zOrder": "32",
+          "w": "238",
+          "measuredW": "47",
+          "measuredH": "27",
+          "x": "148",
+          "y": "230",
+          "properties": {
+            "text": "Email"
+          }
+        },
+        {
+          "ID": "46",
+          "typeID": "TextInput",
+          "zOrder": "33",
+          "w": "243",
+          "measuredW": "117",
+          "measuredH": "27",
+          "x": "143",
+          "y": "308",
+          "properties": {
+            "text": "confirm password"
+          }
+        },
+        {
+          "ID": "47",
+          "typeID": "TextInput",
+          "zOrder": "34",
+          "w": "238",
+          "measuredW": "70",
+          "measuredH": "27",
+          "x": "148",
+          "y": "271",
+          "properties": {
+            "text": "password"
+          }
+        },
+        {
+          "ID": "48",
+          "typeID": "StickyNote",
+          "zOrder": "35",
+          "measuredW": "109",
+          "measuredH": "123",
+          "x": "393",
+          "y": "103",
+          "properties": {
+            "text": "Register page with backend validations"
+          }
+        }
+      ]
+    },
+    "attributes": {
+      "name": "Social Media",
+      "order": 283670.1936868579,
+      "parentID": null
+    },
+    "branchID": "Master",
+    "resourceID": "7BC9883F-58FB-474B-96B1-A2F9F5E9589E",
+    "mockupH": "1597",
+    "mockupW": "1060",
+    "measuredW": "1107",
+    "measuredH": "1610",
+    "version": "1.0"
+  }
+}

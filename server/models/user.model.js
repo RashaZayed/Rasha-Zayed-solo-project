@@ -9,29 +9,29 @@ const UserSchema = new mongoose.Schema(
   {
     firstname: {
       type: String,
-      required: true,
-      maxlength: 100,
+      required: [true],
+      maxlength: [100, "too long Name"]
     },
     lastname: {
       type: String,
-      required: true,
-      maxlength: 100,
+      required: [true,"make sure you entered your lastName"],
+      maxlength:  [100, "too long Name"],
     },
     email: {
       type: String,
-      required: true,
+      required: [true],//, "make sure you entered your email"
       trim: true,
-      unique: 1,
+      unique: [1],
     },
     password: {
       type: String,
-      required: true,
-      minlength: 8,
+      required: [true],
+      minlength: [8]
     },
     password2: {
       type: String,
-      required: true,
-      minlength: 8,
+      required: [true],
+      minlength: [8],
     },
     token: {
       type: String,
