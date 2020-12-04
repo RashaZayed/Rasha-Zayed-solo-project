@@ -33,11 +33,13 @@ const UserSchema = new mongoose.Schema(
       required: [true],
       minlength: [8],
     },
+      profilepic : {
+        type: fil
+      },
     token: {
       type: String,
     },
-  },
-  { timestamps: true }
+  },{timestamps: true}
 );
 UserSchema.pre("save", function (next) {
   var user = this;

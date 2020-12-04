@@ -3,10 +3,10 @@ import "./App.css";
 import Register from "../src/components/Register";
 import ProfilePage from "../src/views/ProfilePage";
 
-import { Router } from "@reach/router";
+import { Redirect, Router } from "@reach/router";
 import HomePage from "./views/HomePage";
-import Like from './components/Like'
-
+import Like from "./components/Like";
+import FileUpload from "./components/FileUpload";
 
 function App() {
   return (
@@ -14,10 +14,11 @@ function App() {
       <Router>
         <Signin path="/" />
         <Register path="/register" />
+
         <ProfilePage path="/profile" />
-        <Like path='/like' />
+        <FileUpload path='/upload' />
+
         <HomePage path="/home" />
-        
       </Router>
     </div>
   );

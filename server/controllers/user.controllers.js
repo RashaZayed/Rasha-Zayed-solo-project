@@ -27,7 +27,7 @@ module.exports.registerUser = (req, res) => {
 
 module.exports.login = (req, res) => {
   let token = req.cookies.auth;
-  User.findByToken(token, (err, user) => {
+  User.findByToken(token, (err, user) => {     //if success return user
     if (err) return res(err);
     if (user)
       return res.status(400).json({
@@ -68,7 +68,7 @@ module.exports.profile = (req,res)=> {
         isAuth: true,
         id: req.user._id,
         email: req.user.email,
-        name: req.user.firstname + req.user.lastname,
+        name: req.user.firstname +" " + req.user.lastname,
       });
 }
 module.exports.logout = (req,res) => {
@@ -77,4 +77,12 @@ module.exports.logout = (req,res) => {
         res.sendStatus(200);
       });
 
+}
+
+module.exports.getUser = (req,res) => {
+    User.findById({_id: req.params.id})
+    .then(user=> res.json({
+        name: user.firstname +" " +  user.lastname,
+    }))
+    .catch(err => res.status(400).json(err))
 }

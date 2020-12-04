@@ -58,12 +58,13 @@ export default function SignIn() {
       .post("http://localhost:8000/api/login", { email, password })
       .then((res) => {
         if (res.data.auth !== undefined) {
-          cookies.set("auth", res.data.auth);
+          cookies.set("auth", res.data.auth); //take the token from response and set in cookies
+         
           navigate("/profile");
         }
         console.log(res);
       })
-      .catch((err) => {
+      .catch((err) => {                   //for backend validations
         console.log(err);
         const errArr = [err.response.data.message];
         setErrorMessage(errArr);
