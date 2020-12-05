@@ -25,12 +25,12 @@ const styles = {
 const cookies = new Cookies();
 const token = cookies.get("auth");
 
-export default () => {
+export default (props) => {
   const [postContent, setPostContent] = useState({
     title: "",
     post: "",
   });
-  const [postId, setPostId] = useState("");
+  const { createCallback } = props;
 
   const onChangeHandler = (e) => {
     setPostContent({
@@ -52,7 +52,7 @@ export default () => {
         }
       )
       .then((res) => {
-        setPostId([...postId, res.data._id]);
+        createCallback(res.data);
       })
       .catch((err) => console.log(err));
   };

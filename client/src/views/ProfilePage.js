@@ -75,25 +75,22 @@ export default () => {
             <div className="card profile">
               <div className="card-body">
                 <h5 className="card-title">Welcome to your profile!</h5>
-                
+
                 <p className="card-text">{user.name}</p>
                 <p className="card-text">{user.email}</p>
 
-                {/* <a href="/home" class="btn btn-primary"> */}
-                <Button onClick={()=>navigate('/home')}>Home</Button>
-                  {/* Home
-                </a> */}
+               
+                <Button onClick={() => navigate("/home")}>Home</Button>
+           
                 <LogoutButton />
               </div>
             </div>
-            <CreatePost />
+            <CreatePost createCallback={(post) => setPosts([post, ...posts])} />
             {loaded && displayPosts}
           </div>
         ) : (
           <Link to="/">Please Sign In First</Link>
-        // redirectTo("http://localhost:3000/")
-       
-          
+          // redirectTo("http://localhost:3000/")
         )}
       </div>
     </Container>

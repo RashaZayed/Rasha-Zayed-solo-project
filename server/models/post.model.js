@@ -22,18 +22,16 @@ const PostSchema = new mongoose.Schema({
 });
 
 PostSchema.methods.doLike = function (cb, liker) {
-  //liker = userId
-  var likers = new Set(this.like);
-  likers.add(liker);
-  this.like = Array.from(likers);
+  if (this.like.includes(liker)) return;
+
+  this.like.push(liker);
   this.markModified("like");
   this.save(cb);
 };
 PostSchema.methods.doDislike = function (cb, disLiker) {
-  var disLikeSet = new Set(this.disLike);
-  disLikeSet.add(disLiker);
-  this.disLike = Array.from(disLikeSet);
-  this.markModified("disLike");
+ if(this.disLike.includes(disLiker)) return;
+  this.disLike.push(disLiker);
+  this.markModified("like");
   this.save(cb);
 };
 

@@ -48,7 +48,7 @@ export default () => {
       <Card className="post">
         <Card.Header as="h5" key={i}>
          
-       <span className='disname'> {post.userId.firstname}</span><span className='disname'>{post.userId.lastname}</span>
+       <span className='disname'> {loaded && post.userId.firstname}</span><span className='disname'>{post.userId.lastname}</span>
           
         </Card.Header>
         <Card.Body>
@@ -66,10 +66,14 @@ export default () => {
       <div>
         {isAuth() ? (
           <div>
+             <Link to='/profile'>
+              <Button className='profbtn'>Profile</Button>
+              </Link>
             <div>
               <h1>News Feed </h1>
+             
 
-              <CreatePost />
+              <CreatePost  createCallback={(post) => setPosts([post, ...posts])}/>
               {loaded &&displayPosts}
             </div>
             <LogoutButton />

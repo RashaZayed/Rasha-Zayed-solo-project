@@ -5,7 +5,8 @@ import { Button, Card, Container } from "react-bootstrap";
 
 export default (props) => {
   const { id, like } = props;
-  
+  const [addLike, setAddLike] = useState(0);
+
   const [disabledButton, setDisabledButton] = useState(false);
   const cookies = new Cookies();
   const token = cookies.get("auth");
@@ -23,15 +24,15 @@ export default (props) => {
         }
       )
       .then((res) => {
-        setDisabledButton(true)
+        setAddLike(addLike + 1);
+        setDisabledButton(true);
       });
   };
 
   return (
     <>
-      
       <Button disabled={disabledButton} onClick={onClickHandler}>
-        {like.length} 
+        {like.length + addLike}
         <svg
           width="1em"
           height="1em"

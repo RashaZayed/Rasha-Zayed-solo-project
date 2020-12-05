@@ -1,4 +1,5 @@
 import axios from "axios";
+import React,{useState} from 'react'
 import Cookies from "universal-cookie";
 import { Button } from "react-bootstrap";
 
@@ -6,6 +7,8 @@ export default (props) => {
   const { id, dislike } = props;
   const cookies = new Cookies();
   const token = cookies.get("auth");
+  const [disabledButton, setDisabledButton] = useState(false);
+  const [addDislike, setAddDislike] = useState(0);
 
   const onClickHandler = (e) => {
     e.preventDefault();
@@ -19,16 +22,20 @@ export default (props) => {
           },
         }
       )
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res)
+        setAddDislike(addDislike +1)
+        setDisabledButton(true)
+      })
       .catch((err) => console.log(err));
   };
 
   return (
-    // <div className="dislikebtn">
+   
     <>
       
-      <Button onClick={onClickHandler}>
-      {dislike.length}
+      <Button disabled={disabledButton} onClick={onClickHandler}>
+      {dislike.length +addDislike}
         <svg
           width="1em"
           height="1em"

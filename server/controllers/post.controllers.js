@@ -12,7 +12,8 @@ module.exports.getAllPosts = (req, res) => {
     .populate("userId", "firstname lastname")
     .then((posts) => res.json(posts))
     .catch((err) => res.json(err));
-};
+  
+}
 module.exports.gatAllPostsForUser = (req, res) => {
   const userId = req.user._id;
   Post.find({ userId: userId })

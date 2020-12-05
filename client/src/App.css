@@ -32,8 +32,10 @@ button {
 .row .col-sm {
   display: inline-block;
 }
-.logoutbtn {
-  /* margin-left: 35rem; */
+.profbtn {
+  position: relative;
+  top:10 px;
+  left:-70px;
 }
 .dislikebtn {
   margin: 20px;

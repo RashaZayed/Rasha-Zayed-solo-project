@@ -10,36 +10,34 @@ const UserSchema = new mongoose.Schema(
     firstname: {
       type: String,
       required: [true],
-      maxlength: [100, "too long Name"]
+      maxlength: [100, "too long Name"],
     },
     lastname: {
       type: String,
-      required: [true,"make sure you entered your lastName"],
-      maxlength:  [100, "too long Name"],
+      required: [true, "make sure you entered your lastName"],
+      maxlength: [100, "too long Name"],
     },
     email: {
       type: String,
-      required: [true],//, "make sure you entered your email"
+      required: [true], //, "make sure you entered your email"
       trim: true,
       unique: [1],
     },
     password: {
       type: String,
       required: [true],
-      minlength: [8]
+      minlength: [8],
     },
     password2: {
       type: String,
       required: [true],
       minlength: [8],
     },
-      profilepic : {
-        type: fil
-      },
     token: {
       type: String,
     },
-  },{timestamps: true}
+  },
+  { timestamps: true }
 );
 UserSchema.pre("save", function (next) {
   var user = this;
