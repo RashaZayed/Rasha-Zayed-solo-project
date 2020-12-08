@@ -53,6 +53,10 @@ export default (props) => {
       )
       .then((res) => {
         createCallback(res.data);
+        setPostContent({
+          title: "",
+          post: "",
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -73,6 +77,7 @@ export default (props) => {
             <OutlinedInput
               onChange={onChangeHandler}
               name="title"
+              value={postContent.title}
               type="text"
               placeholder="Title.."
             />
@@ -81,6 +86,7 @@ export default (props) => {
             <OutlinedInput
               onChange={onChangeHandler}
               name="post"
+              value={postContent.post}
               type="text"
               placeholder="What is in your mind?"
             />

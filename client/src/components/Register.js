@@ -12,7 +12,7 @@ const styles = {
     marginBottom: "1rem",
   },
   button: {
-    width: "100%",
+    margin: "10px",
   },
 };
 export default () => {
@@ -55,16 +55,19 @@ export default () => {
       });
   };
   const displayValidator = errorMessage.map((error, i) => {
-    return (
-      <p key={i}>
-        {error}
-      </p>
-    );
+    // return <p key={i}>{error}</p>
+    return <div key={i} class="alert alert-warning" role="alert">{error}
+  
+</div>
   });
 
   return (
     <Paper elevation={3} style={styles.paper}>
-      {loaded && <div>Thanks for registering With us</div>}
+      {loaded && (
+        <div class="alert alert-primary" role="alert">
+          Thanks for registering with us, please go ahead and sign in!
+        </div>
+      )}
       <h2>Registraion Form</h2>
       <form>
         <FormControl variant="outlined" style={styles.input}>
@@ -107,17 +110,31 @@ export default () => {
             placeholder="Confirm Password"
           />
         </FormControl>
-        <Button
-          type="submit"
-          onClick={onSubmitHandler}
-          variant="contained"
-          color="primary"
-        >
-          Register
-        </Button>
-        <br />
-        <Link to="/"> Sign in</Link>
-        {displayValidator}
+        <FormControl variant="outlined" style={styles.input}>
+          <div>
+            <Button
+              style={styles.button}
+              type="submit"
+              onClick={onSubmitHandler}
+              variant="contained"
+              color="primary"
+            >
+              Register
+            </Button>
+
+            <Button
+              variant="contained"
+              style={styles.button}
+              color="primary"
+              onClick={() => navigate("/")}
+            >
+              {" "}
+              Sign in
+            </Button>
+          </div>
+        </FormControl>
+
+        <div>{displayValidator}</div>
       </form>
     </Paper>
   );

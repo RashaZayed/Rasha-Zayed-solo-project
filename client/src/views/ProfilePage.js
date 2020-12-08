@@ -89,8 +89,8 @@ export default () => {
             {loaded && displayPosts}
           </div>
         ) : (
-          <Link to="/">Please Sign In First</Link>
-          // redirectTo("http://localhost:3000/")
+          // <Link to="/">Please Sign In First</Link>
+          redirectTo("http://localhost:3000/" , noThrow)
         )}
       </div>
     </Container>

@@ -19,7 +19,7 @@ const PostSchema = new mongoose.Schema({
     type: [String], //array of users ids clicked like
   },
   disLike: [String],
-});
+},{timestamps: true});
 
 PostSchema.methods.doLike = function (cb, liker) {
   if (this.like.includes(liker)) return;

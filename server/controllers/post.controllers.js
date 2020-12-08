@@ -8,15 +8,17 @@ module.exports.createPost = (req, res) => {
     .catch((err) => res.status(400).json(err));
 };
 module.exports.getAllPosts = (req, res) => {
-  Post.find()
+  // Post.find()
+  Post.find({})
+    .sort({ createdAt: "descending" })
     .populate("userId", "firstname lastname")
     .then((posts) => res.json(posts))
     .catch((err) => res.json(err));
-  
-}
+};
 module.exports.gatAllPostsForUser = (req, res) => {
   const userId = req.user._id;
   Post.find({ userId: userId })
+    .sort({ createdAt: "descending" })
     .then((posts) => res.json(posts))
     .catch((err) => res.json(err));
 };

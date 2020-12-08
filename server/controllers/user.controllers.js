@@ -14,7 +14,7 @@ module.exports.registerUser = (req, res) => {
     newuser.save((err, doc) => {
       if (err) {
         console.log(err);
-        return res.status(400).json({ message: "Invalid", success: false });
+        return res.status(400).json({ message: "please,make sure you entered your name and email correctly! ", success: false });
       }
       res.status(200).json({
         succes: true,
