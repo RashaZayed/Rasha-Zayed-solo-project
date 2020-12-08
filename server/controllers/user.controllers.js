@@ -14,7 +14,13 @@ module.exports.registerUser = (req, res) => {
     newuser.save((err, doc) => {
       if (err) {
         console.log(err);
-        return res.status(400).json({ message: "please,make sure you entered your name and email correctly! ", success: false });
+        return res
+          .status(400)
+          .json({
+            message:
+              "please,make sure you entered your name and email correctly! ",
+            success: false,
+          });
       }
       res.status(200).json({
         succes: true,
@@ -24,10 +30,10 @@ module.exports.registerUser = (req, res) => {
   });
 };
 
-
 module.exports.login = (req, res) => {
   let token = req.cookies.auth;
-  User.findByToken(token, (err, user) => {     //if success return user
+  User.findByToken(token, (err, user) => {
+    //if success return user
     if (err) return res(err);
     if (user)
       return res.status(400).json({
@@ -63,26 +69,28 @@ module.exports.login = (req, res) => {
     }
   });
 };
-module.exports.profile = (req,res)=> {
-    res.json({
-        isAuth: true,
-        id: req.user._id,
-        email: req.user.email,
-        name: req.user.firstname +" " + req.user.lastname,
-      });
-}
-module.exports.logout = (req,res) => {
-    req.user.deleteToken(req.token, (err, user) => {
-        if (err) return res.status(400).send(err);
-        res.sendStatus(200);
-      });
+module.exports.profile = (req, res) => {
+  res.json({
+    isAuth: true,
+    id: req.user._id,
+    email: req.user.email,
+    name: req.user.firstname + " " + req.user.lastname,
+    pic: req.user.pic,
+  });
+};
+module.exports.logout = (req, res) => {
+  req.user.deleteToken(req.token, (err, user) => {
+    if (err) return res.status(400).send(err);
+    res.sendStatus(200);
+  });
+};
 
-}
-
-module.exports.getUser = (req,res) => {
-    User.findById({_id: req.params.id})
-    .then(user=> res.json({
-        name: user.firstname +" " +  user.lastname,
-    }))
-    .catch(err => res.status(400).json(err))
-}
+module.exports.getUser = (req, res) => {
+  User.findById({ _id: req.params.id })
+    .then((user) =>
+      res.json({
+        name: user.firstname + " " + user.lastname,
+      })
+    )
+    .catch((err) => res.status(400).json(err));
+};

@@ -11,7 +11,7 @@ module.exports.getAllPosts = (req, res) => {
   // Post.find()
   Post.find({})
     .sort({ createdAt: "descending" })
-    .populate("userId", "firstname lastname")
+    .populate("userId", "firstname lastname pic")
     .then((posts) => res.json(posts))
     .catch((err) => res.json(err));
 };

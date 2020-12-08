@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: [true], //, "make sure you entered your email"
+      required: [true], 
       trim: true,
       unique: [1],
     },
@@ -34,6 +34,9 @@ const UserSchema = new mongoose.Schema(
       minlength: [8],
     },
     token: {
+      type: String,
+    },
+    pic: {
       type: String,
     },
   },

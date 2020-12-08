@@ -14,7 +14,9 @@ export default () => {
   const [user, setUser] = useState({
     name: "",
     email: "",
+    pic: "",
   });
+  const [pic, setPic] = useState("");
   const isAuthenticated = () => {
     if (token !== undefined) {
       return true;
@@ -35,7 +37,13 @@ export default () => {
         },
       })
       .then((res) => {
-        setUser({ ...user, name: res.data.name, email: res.data.email });
+        setUser({
+          ...user,
+          name: res.data.name,
+          email: res.data.email,
+          pic: res.data.pic,
+        });
+        setPic("data:image/png;base64," + res.data.pic);
         console.log(res);
       })
       .catch((err) => console.log(err));
@@ -56,6 +64,8 @@ export default () => {
     <Card className="post">
       <Card.Header as="h5" key={i}>
         {" "}
+        
+        <img src={pic} className='userspp'/> 
         {user.name}
       </Card.Header>
       <Card.Body>
@@ -64,7 +74,8 @@ export default () => {
         <Like id={post._id} like={post.like} />
         <Dislike id={post._id} dislike={post.disLike} />
       </Card.Body>
-    </Card>
+  </Card>
+   
   ));
 
   return (
@@ -78,10 +89,10 @@ export default () => {
 
                 <p className="card-text">{user.name}</p>
                 <p className="card-text">{user.email}</p>
+                <img className='ppic' src={pic}></img>
 
-               
                 <Button onClick={() => navigate("/home")}>Home</Button>
-           
+
                 <LogoutButton />
               </div>
             </div>
@@ -89,8 +100,7 @@ export default () => {
             {loaded && displayPosts}
           </div>
         ) : (
-          // <Link to="/">Please Sign In First</Link>
-          redirectTo("http://localhost:3000/" , noThrow)
+          <Link to="/">Please Sign In First</Link>
         )}
       </div>
     </Container>

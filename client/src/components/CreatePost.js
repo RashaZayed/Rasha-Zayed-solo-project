@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Paper, FormControl, OutlinedInput, Button } from "@material-ui/core";
 import { navigate, Link } from "@reach/router";
-import DeletePost from "./DeletePost";
+
 import Cookies from "universal-cookie";
 
 const styles = {

@@ -5,8 +5,8 @@ import ProfilePage from "../src/views/ProfilePage";
 
 import { Redirect, Router } from "@reach/router";
 import HomePage from "./views/HomePage";
-import Like from "./components/Like";
-import FileUpload from "./components/FileUpload";
+
+
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Register path="/register" />
 
         <ProfilePage path="/profile" />
-        <FileUpload path='/upload' />
+     
 
         <HomePage path="/home" />
       </Router>

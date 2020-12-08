@@ -12,6 +12,7 @@ import Like from "../components/Like";
 export default () => {
   const [posts, setPosts] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [pic, setPic] = useState("");
   const cookies = new Cookies();
   const token = cookies.get("auth");
 
@@ -32,6 +33,7 @@ export default () => {
       })
       .then((res) => {
         setPosts(...posts, res.data);
+        
         setLoaded(true)
         
 
@@ -39,16 +41,17 @@ export default () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  
 
+   
   const displayPosts = posts.map((post, i) => {
       
     
     return (
       <Card className="post">
         <Card.Header as="h5" key={i}>
-         
+        <img src={'data:image/png;base64,'+post.userId.pic} className='userspp'/> 
        <span className='disname'> {loaded && post.userId.firstname}</span><span className='disname'>{post.userId.lastname}</span>
+       
           
         </Card.Header>
         <Card.Body>
