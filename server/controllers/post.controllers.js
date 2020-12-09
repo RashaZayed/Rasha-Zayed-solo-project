@@ -22,6 +22,12 @@ module.exports.gatAllPostsForUser = (req, res) => {
     .then((posts) => res.json(posts))
     .catch((err) => res.json(err));
 };
+module.exports.getOnePost = (req, res) => {
+  Post.findOne({ _id: req.params.id })
+    .populate("userId", "firstname lastname pic")
+    .then((post) => res.json(post))
+    .catch((err) => res.json(err));
+};
 module.exports.updatePost = (req, res) => {
   Post.findByIdAndUpdate({ _id: req.params.id }, req.body, {
     new: true,

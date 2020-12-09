@@ -5,8 +5,7 @@ import ProfilePage from "../src/views/ProfilePage";
 
 import { Redirect, Router } from "@reach/router";
 import HomePage from "./views/HomePage";
-
-
+import PostDetails from "./views/PostDetails";
 
 function App() {
   return (
@@ -16,8 +15,7 @@ function App() {
         <Register path="/register" />
 
         <ProfilePage path="/profile" />
-     
-
+        <PostDetails path="/PostDetails/:id" />
         <HomePage path="/home" />
       </Router>
     </div>

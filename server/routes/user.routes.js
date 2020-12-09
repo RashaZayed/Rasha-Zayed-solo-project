@@ -15,22 +15,7 @@ module.exports = (app) => {
   // get the user to the profile
   app.get("/api/profile", auth, UserController.profile);
   //get user by id to access the post creator info
-  app.get('/api/user/:id' , auth, UserController.getUser)
-  //upload endpoint
-  app.post('/api/upload' ,(req,res)=>{
-    if(req.files === null){
-      return res.status(400).json({message: "No message uploaded"})
-    }
-    const file = req.files.file; //req.files.img
-    file.mv(`${__dirname}/client/public/uploads/${file.name}`, err => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send(err);
-      }
-      res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
-  });
-});
-
+  app.get("/api/user/:id", auth, UserController.getUser);
 
   //logout user
   app.get("/api/logout", auth, UserController.logout);
