@@ -53,7 +53,7 @@ export default () => {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    const { firstname, lastname, email, password, password2 } = user;
+
     axios
       .post("http://localhost:8000/api/register", user)
       .then((res) => {
@@ -65,11 +65,8 @@ export default () => {
           password: "",
           password2: "",
           pic: "",
-
-        })
+        });
         setLoaded(true);
-
-        // navigate("/")
       })
       .catch((err) => {
         console.log(err);
@@ -90,7 +87,8 @@ export default () => {
     <Paper elevation={3} style={styles.paper}>
       {loaded && (
         <div class="alert alert-primary" role="alert">
-          Thanks {user.firstname} for registering with us, please go ahead and sign in!
+          Thanks {user.firstname} for registering with us, please go ahead and
+          sign in!
         </div>
       )}
       <h2>Registraion Form</h2>
@@ -128,7 +126,6 @@ export default () => {
             name="password"
             type="password"
             value={user.password}
-            
             placeholder="Password"
           />
         </FormControl>
@@ -142,16 +139,14 @@ export default () => {
           />
         </FormControl>
         <FormControl variant="outlined" style={styles.input}>
-          
           <OutlinedInput
             onChange={onChangeHandler}
             name="pic"
             type="file"
             // value={user.pic}
             accept="image/*"
-            
           />
-          <img className='imgPrev' src={picPreview}></img>
+          <img className="imgPrev" src={picPreview}></img>
         </FormControl>
         <FormControl variant="outlined" style={styles.input}>
           <div>
