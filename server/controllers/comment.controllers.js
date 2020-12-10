@@ -11,9 +11,9 @@ module.exports.gatAllCommentsForPost = (req, res) => {
 };
 
 module.exports.createcomment = (req, res) => {
-  const { body } = req.body;
+  const { body,postId } = req.body;
   const userId = req.user._id;
-  Comment.create({ body, userId })
+  Comment.create({ body, userId , postId })
     .then((comment) => res.json(comment))
     .catch((err) => res.status(400).json(err));
 };

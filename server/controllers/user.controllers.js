@@ -11,7 +11,7 @@ module.exports.registerUser = (req, res) => {
     if (user)
       return res.status(400).json({ auth: false, message: "email exits" });
 
-    newuser.save((err, doc) => {
+    newuser.save((err, doc) => {   //hashing paswword and save it
       if (err) {
         console.log(err);
         return res.status(400).json({
@@ -32,13 +32,7 @@ module.exports.login = (req, res) => {
   let token = req.cookies.auth;
   User.findByToken(token, (err, user) => {
     //if success return user
-    if (err) return res(err);
-    if (user)
-      return res.status(400).json({
-        error: true,
-        message: "You are already logged in",
-      });
-    else {
+   
       User.findOne({ email: req.body.email }, function (err, user) {
         if (!user)
           return res.status(400).json({
@@ -64,7 +58,7 @@ module.exports.login = (req, res) => {
           });
         });
       });
-    }
+    
   });
 };
 module.exports.profile = (req, res) => {

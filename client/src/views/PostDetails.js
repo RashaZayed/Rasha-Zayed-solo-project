@@ -1,6 +1,15 @@
-import React from "react";
+import React,{useState} from "react";
 import DisplayComments from "../components/DisplayComments";
+import {Link} from '@reach/router'
 
 export default (props) => {
-  return <DisplayComments postId={props.id} />;
+  const [comments , setComments] = useState('');
+  return ( 
+  <div>
+      <p className='comment-link'>
+      <Link to='/home'>Back</Link>
+      </p>
+  <DisplayComments postId={props.id} createCallBack={(comment)=> setComments(...comments, comment)}/>
+  </div>
+  );
 };

@@ -8,11 +8,12 @@ import CreatePost from "../components/CreatePost";
 import LogoutButton from "../components/LogoutButton";
 import Dislike from "../components/Dislike";
 import Like from "../components/Like";
+import PostDetails from "./PostDetails";
 
 export default () => {
   const [posts, setPosts] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [pic, setPic] = useState("");
+  
   const cookies = new Cookies();
   const token = cookies.get("auth");
 
@@ -58,6 +59,7 @@ export default () => {
           <Card.Title>{post.title}</Card.Title>
           <Card.Text>{post.post}</Card.Text>
           <Like id={post._id} like={post.like} />
+          <Link to={"/PostDetails/" + post._id}> Comments |</Link>
           <Dislike id={post._id} dislike={post.disLike} />
         </Card.Body>
       </Card>
@@ -69,9 +71,9 @@ export default () => {
       <div>
         {isAuth() ? (
           <div>
-             <Link to='/profile'>
-              <Button className='profbtn'>Profile</Button>
-              </Link>
+            <p className='nav'>
+             <Link to='/profile'>Profile</Link> 
+             </p>
             <div>
               <h1>News Feed </h1>
              

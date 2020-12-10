@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const salt = 10;
-const config = require("../config/mongoose.config");
+
 
 const secret = "mysecretkey";
 const UserSchema = new mongoose.Schema(
@@ -42,6 +42,7 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+//for hashing password
 UserSchema.pre("save", function (next) {
   var user = this;
 
@@ -60,14 +61,14 @@ UserSchema.pre("save", function (next) {
     next();
   }
 });
-//for checking password
+//for checking password while signin
 UserSchema.methods.comparepassword = function (password, cb) {
   bcrypt.compare(password, this.password, function (err, isMatch) {
     if (err) return cb(next);
     cb(null, isMatch);
   });
 };
-//to generate token in login route
+//to generate token in login route 
 UserSchema.methods.generateToken = function (cb) {
   var user = this;
   var token = jwt.sign(user._id.toHexString(), secret);
@@ -78,7 +79,7 @@ UserSchema.methods.generateToken = function (cb) {
     cb(null, user);
   });
 };
-//findone by  token to check it's logged in or not
+//find a user by  token to check it's logged in or not
 UserSchema.statics.findByToken = function (token, cb) {
   var user = this;
 

@@ -14,6 +14,7 @@ export default (props) => {
   const [body, setBody] = useState("");
   const [comments, setComments] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const { createCallBack } = props;
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/post/" + postId, {
@@ -32,27 +33,51 @@ export default (props) => {
             },
           })
           .then((res) => {
-            setComments(...comments, res.data.body);
+            setComments(...comments, res.data);
+
             setLoaded(true);
           });
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [setComments]);
   const onChangeHandler = (e) => {
     setBody(e.target.value);
   };
 
   const onClickHandler = (e) => {
-    //send userId
     axios
-      .post("http://localhost:8000/api/comments", body, {
-        headers: {
-          auth: token,
-        },
+      .post(
+        "http://localhost:8000/api/comments",
+        { body, postId },
+        {
+          headers: {
+            auth: token,
+          },
+        }
+      )
+      .then((res) => {
+        setBody("");
+        createCallBack(res.data.body);
+        console.log(res);
       })
-      .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
+  console.log("comment" + comments);
+  const displayComments = comments.map((comment, i) => {
+    return (
+      <div key={i} class="alert alert-primary" role="alert">
+        <img
+          className="comment-pic"
+          src={"data:image/png;base64," + comment.userId.pic}
+        />{" "}
+        <span>
+          {" "}
+          {comment.userId.firstname} {comment.userId.lastname}{" "}
+        </span>
+        <p> {comment.body}</p>
+      </div>
+    );
+  });
 
   return (
     <div>
@@ -72,10 +97,12 @@ export default (props) => {
             <Like id={post._id} like={post.like} />
             <Dislike id={post._id} dislike={post.disLike} />
           </Card.Body>
+          <Card.Body>{displayComments}</Card.Body>
           <Card.Body>
             <TextField
               onChange={onChangeHandler}
               placeholder="Add a comment"
+              value={body}
             ></TextField>
             <Button onClick={onClickHandler}> Comment </Button>
           </Card.Body>
