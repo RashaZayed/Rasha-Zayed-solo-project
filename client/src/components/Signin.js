@@ -58,7 +58,7 @@ export default function SignIn() {
       .post("http://localhost:8000/api/login", { email, password })
       .then((res) => {
         if (res.data.auth !== undefined) {
-          cookies.set("auth", res.data.auth); //take the token from response and set in cookies
+          cookies.set("auth", res.data.auth); //take the token from the response of login-> generate token and set in cookies
          
           navigate("/profile");
         }

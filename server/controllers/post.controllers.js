@@ -8,7 +8,7 @@ module.exports.createPost = (req, res) => {
     .catch((err) => res.status(400).json(err));
 };
 module.exports.getAllPosts = (req, res) => {
-  // Post.find()
+  
   Post.find({})
     .sort({ createdAt: "descending" })
     .populate("userId", "firstname lastname pic")
@@ -39,7 +39,7 @@ module.exports.deletePost = (req, res) => {
     .catch((err) => res.json(err));
 };
 module.exports.updatePostLikes = (req, res) => {
-  const userId = req.user._id;
+  const userId = req.user._id; //get the user id from auth
   Post.findById(req.params.id).then((post) =>
     post.doLike(() => res.json(post), userId)
   );

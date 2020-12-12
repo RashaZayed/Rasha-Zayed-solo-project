@@ -6,7 +6,7 @@ import { Card, Button, Container } from "react-bootstrap";
 import Cookies from "universal-cookie";
 import { TextField } from "@material-ui/core";
 
-export default (props) => {
+const DisplayComments = (props) => {
   const cookies = new Cookies();
   const token = cookies.get("auth");
   const { postId } = props;
@@ -14,7 +14,7 @@ export default (props) => {
   const [body, setBody] = useState("");
   const [comments, setComments] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const { createCallBack } = props;
+ 
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/post/" + postId, {
@@ -39,7 +39,7 @@ export default (props) => {
           });
       })
       .catch((err) => console.log(err));
-  }, [setComments]);
+  }, []);
   const onChangeHandler = (e) => {
     setBody(e.target.value);
   };
@@ -57,27 +57,14 @@ export default (props) => {
       )
       .then((res) => {
         setBody("");
-        createCallBack(res.data.body);
+        setComments([...comments , res.data])
+        // createCallBack(res.data.body);
         console.log(res);
       })
       .catch((err) => console.log(err));
   };
   console.log("comment" + comments);
-  const displayComments = comments.map((comment, i) => {
-    return (
-      <div key={i} class="alert alert-primary" role="alert">
-        <img
-          className="comment-pic"
-          src={"data:image/png;base64," + comment.userId.pic}
-        />{" "}
-        <span>
-          {" "}
-          {comment.userId.firstname} {comment.userId.lastname}{" "}
-        </span>
-        <p> {comment.body}</p>
-      </div>
-    );
-  });
+  
 
   return (
     <div>
@@ -97,17 +84,47 @@ export default (props) => {
             <Like id={post._id} like={post.like} />
             <Dislike id={post._id} dislike={post.disLike} />
           </Card.Body>
-          <Card.Body>{displayComments}</Card.Body>
+          <Card.Body>
+            
+            { comments.length > 0 &&
+                comments.map((comment, i) => (
+                    <div key={i} className="alert alert-primary" role="alert">
+                      <img
+                        className="comment-pic"
+                        src={"data:image/png;base64," + comment.userId.pic}
+                      />{" "}
+                      <span>
+                        {" "}
+                        {comment.userId.firstname} {comment.userId.lastname}{" "}
+                      </span>
+                      <p> {comment.body}</p>
+                    </div>
+                ))
+            }
+            </Card.Body>
           <Card.Body>
             <TextField
               onChange={onChangeHandler}
               placeholder="Add a comment"
               value={body}
             ></TextField>
-            <Button onClick={onClickHandler}> Comment </Button>
+            <Button onClick={onClickHandler}>
+              <svg
+                width="1em"
+                height="1em"
+                viewBox="0 0 16 16"
+                class="bi bi-caret-right-fill"
+                fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+              </svg>
+            </Button>
           </Card.Body>
         </Card>
       )}
     </div>
   );
 };
+export default DisplayComments;
+

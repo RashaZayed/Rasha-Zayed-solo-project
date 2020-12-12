@@ -1,7 +1,23 @@
-# Social Media Platform using MERN Stack
+# Social Media Web Application
 
--Registraion form to register the user's info with backend validators
--Signin and Signout with authentication and backend validators
--User would be able to navigate between profile and home pages with authorization
--On profile page, user would see his information and uploaded profile picture and all the user's old posts and ability to create new posts
--In Home page user would see all other users's posts and like or dislike them and replying with comments beside creating new posts
+## Description
+
+Social media web application, let the user register to be able to signin to his profile(authentication) where can see all his posts and information and profile picture. User also can navigate between his profile page and the Home page to see all users posts and be able to like or dislike the posts! finally, the user can logout to secure his account.
+
+## technologies used:
+
+MERN Stack (MongoDB , Express , React, Node.js) , Material UI, bootstrap ,axios, balsamiq wireframes
+
+## Features:
+
+P0: register and signin and sign out with authentication
+P0: create new posts and ability to like and dislike all posts
+P0: home page displays all the users posts
+P1: profile page displays all the user's posts and his information
+P2: adding comments to any post
+
+## New Features(Challenges):
+
+-uploading profile picture and be displayed in all posts and comments.
+-Likes and dislikes feature.
+-adding comments to any post.

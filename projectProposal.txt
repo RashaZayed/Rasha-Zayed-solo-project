@@ -1,6 +1,6 @@
-
 project proposal
 Social Media Web Application
+
 Social media web application, let the user register to be able to signin to his profile(authentication) where can see all his posts and information and image. user also can navigate between his profile page and the Home page(authorization) to see all users posts and be able to like or dislike the posts! finally, the user can logout to secure his account.
 
 technologies used:

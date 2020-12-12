@@ -7,10 +7,11 @@ import CreatePost from "../components/CreatePost";
 import LogoutButton from "../components/LogoutButton";
 import Like from "../components/Like";
 import Dislike from "../components/Dislike";
+import Signin from "../components/Signin";
 
 export default () => {
   const cookies = new Cookies();
-  const token = cookies.get("auth");
+  let token = cookies.get("auth");
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -30,6 +31,8 @@ export default () => {
   const [posts, setPosts] = useState([]);
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
+    
+  token = cookies.get("auth");
     axios
       .get("http://localhost:8000/api/profile", {
         headers: {
@@ -44,6 +47,7 @@ export default () => {
           pic: res.data.pic,
         });
         setPic("data:image/png;base64," + res.data.pic);
+
         console.log(res);
       })
       .catch((err) => console.log(err));
@@ -60,22 +64,7 @@ export default () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const displayPosts = posts.map((post, i) => (
-    <Card className="post">
-      <Card.Header as="h5" key={i}>
-        {" "}
-        <img src={pic} className="userspp" />
-        {user.name}
-      </Card.Header>
-      <Card.Body>
-        <Card.Title>{post.title}</Card.Title>
-        <Card.Text>{post.post}</Card.Text>
-        <Link to={"/PostDetails/" + post._id}> Comments |</Link>
-        <Like id={post._id} like={post.like} />
-        <Dislike id={post._id} dislike={post.disLike} />
-      </Card.Body>
-    </Card>
-  ));
+ 
 
   return (
     <Container>
@@ -114,11 +103,44 @@ export default () => {
                 <LogoutButton />
               </div>
             </div>
-            <CreatePost createCallback={(post) => setPosts([post, ...posts])} />
-            {loaded && displayPosts}
+            {loaded && (
+              <CreatePost
+                createCallback={(post) => setPosts([post, ...posts])}
+              />
+            )}
+            {/* {loaded && displayPosts} */}
+            {loaded &&
+              posts.map((post, i) => (
+                <Card className="post" key={i}>
+                  <Card.Header as="h5">
+                    {" "}
+                    <img src={pic} alt={`pic${i}`} className="userspp" />
+                    {user.name}
+                  </Card.Header>
+                  <Card.Body>
+                    <Card.Title>{post.title}</Card.Title>
+                    <Card.Text>{post.post}</Card.Text>
+                    <Link
+                      className="seeComment"
+                      to={"/PostDetails/" + post._id}
+                    >
+                      {" "}
+                      See Comments{" "}
+                    </Link>
+                    <Like id={post._id} like={post.like} />
+                    <Dislike id={post._id} dislike={post.disLike} />
+                  </Card.Body>
+                </Card>
+              ))}
           </div>
         ) : (
-          <Link to="/">Please Sign In First</Link>
+          <div>
+            <div style={{color: 'red'}}>
+              please make sure to sign in first
+            </div>
+
+            <Signin />
+          </div>
         )}
       </div>
     </Container>

@@ -8,6 +8,7 @@ export default (props) => {
   const [addLike, setAddLike] = useState(0);
 
   const [disabledButton, setDisabledButton] = useState(false);
+  const [post , setPost] = useState('')
   const cookies = new Cookies();
   const token = cookies.get("auth");
 
@@ -24,10 +25,19 @@ export default (props) => {
         }
       )
       .then((res) => {
+        // setPost(res.data)
         setAddLike(addLike + 1);
         setDisabledButton(true);
       });
   };
+  // console.log(post)
+  // let likeArr = post.like;
+  // for (let i=0;  i<likeArr.length       ;i++){
+  //   if (likeArr[i]== id){
+  //     setDisabledButton(true);
+  //   }
+  // }
+  
 
   return (
     <>

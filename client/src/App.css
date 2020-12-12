@@ -70,15 +70,23 @@ h1 {
   height: 50px;
 }
 .comment-link {
-  margin-left: 424px;
-  font-size: 20px;
+  margin-left: 360px;
+  font-size: 15px;
   position: relative;
   top: 17px;
 }
 .nav {
-  margin-left: 760px;
-  font-size: 20px;
+  margin-left: 850px;
+  font-size: 15px;
+  position: relative ;
+  top: 80px;
   
 
 }
-
+.seeComment{
+  margin-left: 500px;
+  font-size: 15px;
+}
+.addComment {
+  margin-left: 300px;
+}

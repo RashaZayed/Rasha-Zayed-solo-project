@@ -22,10 +22,8 @@ const styles = {
     color: "white",
   },
 };
-const cookies = new Cookies();
-const token = cookies.get("auth");
 
-export default (props) => {
+const CreatePost = (props) => {
   const [postContent, setPostContent] = useState({
     title: "",
     post: "",
@@ -40,6 +38,8 @@ export default (props) => {
   };
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    const cookies = new Cookies();
+    const token = cookies.get("auth");
     const { title, post } = postContent;
     axios
       .post(
@@ -97,3 +97,4 @@ export default (props) => {
     </div>
   );
 };
+export default CreatePost;
