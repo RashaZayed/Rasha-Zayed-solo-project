@@ -4,11 +4,22 @@ module.exports.createPost = (req, res) => {
   const { title, post } = req.body;
   const userId = req.user._id;
   Post.create({ title, post, userId })
-    .then((post) => res.json(post))
+    .then((post) =>
+      res.json({
+        title: title,
+        post: post.post,
+        userId: {
+          firstname: req.user.firstname,
+          lastname: req.user.lastname,
+          pic: req.user.pic,
+        },
+        like: post.like,
+        disLike: post.disLike,
+      })
+    )
     .catch((err) => res.status(400).json(err));
 };
 module.exports.getAllPosts = (req, res) => {
-  
   Post.find({})
     .sort({ createdAt: "descending" })
     .populate("userId", "firstname lastname pic")
