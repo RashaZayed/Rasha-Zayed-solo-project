@@ -6,6 +6,7 @@ module.exports.createPost = (req, res) => {
   Post.create({ title, post, userId })
     .then((post) =>
       res.json({
+        _id: post._id,
         title: title,
         post: post.post,
         userId: {

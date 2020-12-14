@@ -58,7 +58,7 @@ const DisplayComments = (props) => {
       .then((res) => {
         setBody("");
         setComments([...comments , res.data])
-        // createCallBack(res.data.body);
+        
         console.log(res);
       })
       .catch((err) => console.log(err));

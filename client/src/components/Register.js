@@ -70,7 +70,7 @@ export default () => {
           password2: "",
           pic: "",
         });
-       
+
         setDisplayMessage(true);
         setLoaded(true);
       })
@@ -81,7 +81,6 @@ export default () => {
       });
   };
   const displayValidator = errorMessage.map((error, i) => {
-    // return <p key={i}>{error}</p>
     return (
       <div key={i} class="alert alert-warning" role="alert">
         {error}
@@ -95,7 +94,6 @@ export default () => {
         <div class="alert alert-primary" role="alert">
           Thanks {user.firstname} for registering with us, please go ahead and
           sign in!
-          
         </div>
       )}
       <h2>Registraion Form</h2>
