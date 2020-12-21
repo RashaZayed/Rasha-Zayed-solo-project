@@ -11,7 +11,8 @@ module.exports.registerUser = (req, res) => {
     if (user)
       return res.status(400).json({ auth: false, message: "email exits" });
 
-    newuser.save((err, doc) => {   //hashing paswword and save it
+    newuser.save((err, doc) => {
+      //hashing password and save it
       if (err) {
         console.log(err);
         return res.status(400).json({
@@ -32,33 +33,32 @@ module.exports.login = (req, res) => {
   let token = req.cookies.auth;
   User.findByToken(token, (err, user) => {
     //if success return user
-   
-      User.findOne({ email: req.body.email }, function (err, user) {
-        if (!user)
+
+    User.findOne({ email: req.body.email }, function (err, user) {
+      if (!user)
+        return res.status(400).json({
+          isAuth: false,
+          message: "email not found",
+        });
+
+      user.comparepassword(req.body.password, (err, isMatch) => {
+        if (!isMatch)
           return res.status(400).json({
             isAuth: false,
-            message: "email not found",
+            message: "password doesn't match",
           });
 
-        user.comparepassword(req.body.password, (err, isMatch) => {
-          if (!isMatch)
-            return res.status(400).json({
-              isAuth: false,
-              message: "password doesn't match",
-            });
-
-          user.generateToken((err, user) => {
-            if (err) return res.status(400).send(err);
-            res.json({
-              isAuth: true,
-              id: user._id,
-              email: user.email,
-              auth: user.token, //to return its token in response
-            });
+        user.generateToken((err, user) => {
+          if (err) return res.status(400).send(err);
+          res.json({
+            isAuth: true,
+            id: user._id,
+            email: user.email,
+            auth: user.token, //to return its token in response
           });
         });
       });
-    
+    });
   });
 };
 module.exports.profile = (req, res) => {

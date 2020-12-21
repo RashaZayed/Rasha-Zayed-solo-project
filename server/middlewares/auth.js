@@ -9,7 +9,7 @@ let auth = (req, res, next) => {  //to check if there is token or not
         error: "error",
       });
 
-    req.user = user;
+    req.user = user; //send the user in response
     next();
   });
 };
